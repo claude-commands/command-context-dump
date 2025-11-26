@@ -12,6 +12,7 @@ Save current working context to continue later.
 **Usage:** `/context-dump [name] [--restore]`
 
 **Examples:**
+
 - `/context-dump` - Save current context
 - `/context-dump auth-refactor` - Save with name
 - `/context-dump --restore` - List and restore context
@@ -19,6 +20,7 @@ Save current working context to continue later.
 - `/context-dump --list` - List all saved contexts
 
 **Workflow:**
+
 1. Capture current git state
 2. Save open investigation notes
 3. Record hypotheses and findings
@@ -35,6 +37,7 @@ Save or restore named context.
 ## Configuration
 
 Parse arguments:
+
 - **Name**: Context identifier
 - **--restore**: Restore mode
 - **--list**: List saved contexts
@@ -61,7 +64,7 @@ Parse arguments:
 
    # Current HEAD
    git rev-parse HEAD
-   ```
+   ```text
 
 2. **Identify Active Files**
 
@@ -76,7 +79,7 @@ Parse arguments:
 
    # Recently modified
    ls -lt --time-style=+%s | head -20
-   ```
+   ```text
 
 3. **Capture Investigation Notes**
 
@@ -161,42 +164,48 @@ Parse arguments:
      .setProtectedHeader({ alg: 'HS256' })
      .setExpirationTime('1h')
      .sign(secret);
-   ```
+   ```text
 
    ### Middleware WIP
+
    ```typescript
    // src/middleware/auth.ts - Line 45
    // TODO: Handle refresh token
    // TODO: Add token revocation check
-   ```
+   ```text
 
    ## Related Resources
+
    - PR #123 - Initial auth work
    - Issue #456 - JWT migration request
    - Slack thread: #dev 2025-01-14
 
    ## Environment
+
    - Node: 18.17.0
    - npm: 9.6.7
    - Key deps: jose@5.2.0
 
    ---
    *Saved by /context-dump on 2025-01-15*
-   ```
+
+   ```text
 
 5. **Store Context**
 
    Save to:
-   ```
+
+   ```text
    .claude/contexts/
    └── auth-refactor-2025-01-15.md
-   ```
+   ```text
 
    Or project-local:
-   ```
+
+   ```text
    .context/
    └── auth-refactor.md
-   ```
+   ```text
 
 ### Restoring Context
 
@@ -205,9 +214,10 @@ Parse arguments:
    ```bash
    # Find saved contexts
    ls -la .claude/contexts/ .context/ 2>/dev/null
-   ```
+   ```text
 
    Display:
+
    ```markdown
    # Saved Contexts
 
@@ -216,11 +226,12 @@ Parse arguments:
    | auth-refactor | 2025-01-15 | feature/auth | In progress |
    | bug-123 | 2025-01-10 | fix/bug-123 | Completed |
    | perf-audit | 2025-01-08 | main | On hold |
-   ```
+   ```text
 
 2. **Load Context**
 
    Read the context file and present summary:
+
    ```markdown
    # Restoring: auth-refactor
 
@@ -238,18 +249,19 @@ Parse arguments:
    ## Next Steps
    1. Finish token refresh implementation
    2. Write tests for token validation
-   ```
+   ```text
 
 3. **Restore Git State**
 
    Offer to:
+
    ```bash
    # Switch to branch
    git checkout feature/auth-refactor
 
    # Apply stash if exists
    git stash apply stash@{0}
-   ```
+   ```text
 
 4. **Provide Continuation Prompt**
 
@@ -266,11 +278,12 @@ Parse arguments:
    - [ ] Open the relevant files
    - [ ] Continue implementing token refresh
    - [ ] Review the current progress
-   ```
+   ```text
 
 ## Output Structure
 
 ### Saving
+
 ```markdown
 # Context Saved
 
@@ -286,9 +299,10 @@ Parse arguments:
 
 ## Resume Later
 `/context-dump --restore auth-refactor`
-```
+```text
 
 ### Restoring
+
 ```markdown
 # Context Restored
 
@@ -303,15 +317,17 @@ Parse arguments:
 
 ## Recommended Actions
 [Next steps to take]
-```
+```text
 
 ## Context Storage
 
 Default locations:
+
 - `.claude/contexts/` - Claude Code specific
 - `.context/` - Project local
 
 Each context includes:
+
 - Git state snapshot
 - Investigation notes
 - Progress tracking

@@ -14,7 +14,7 @@ ln -s <clone-path>/command-context-dump/context-dump.md ~/.claude/commands/conte
 
 ## Usage
 
-```
+```text
 /context-dump                        # Save current context
 /context-dump auth-refactor          # Save with name
 /context-dump --restore              # List saved contexts
@@ -42,6 +42,7 @@ ln -s <clone-path>/command-context-dump/context-dump.md ~/.claude/commands/conte
 ## Example Output
 
 ### Saving
+
 ```markdown
 # Context: auth-refactor
 **Branch**: feature/auth-refactor
@@ -59,6 +60,7 @@ Refactoring authentication to use JWT
 ```
 
 ### Restoring
+
 ```markdown
 # Restoring: auth-refactor
 
@@ -73,6 +75,7 @@ Token refresh logic in middleware
 ## Storage
 
 Contexts saved to:
+
 - `.claude/contexts/` - Claude Code directory
 - `.context/` - Project local
 
